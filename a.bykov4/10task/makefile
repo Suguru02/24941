@@ -1,3 +1,3 @@
 all:
-	gcc prog.c -o prog
+	gcc 1_task.c -o prog
 	gcc main.c -o main
