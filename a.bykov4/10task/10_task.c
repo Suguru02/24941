@@ -9,6 +9,7 @@ int main(int argc, char* argv[]){
         perror("argc");
         return 1;
     }
+    int status;
 
     pid_t descendant_PID;
 
@@ -21,7 +22,7 @@ int main(int argc, char* argv[]){
         perror("execvp");
         return 1;
     default:
-        int status;
+        
         wait(&status);
         printf("\nstatus = %d\n", status);
     }
