@@ -21,5 +21,5 @@ int main() {
     signal(SIGINT,  &sigint);
     signal(SIGQUIT, &sigquit);
 
-    while(1);
+    for (;;);
 }
