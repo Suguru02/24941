@@ -2,27 +2,24 @@
 #include <stdlib.h>
 #include <signal.h>
 
-int count = 0;
+int sig_count = 0;
 
-// будет писщать при нажатии CTRL^C
-void signal_SIGINT() {
+void sigint() {
     printf("\a");
-    // очистка буферов
     fflush(NULL);
-    count++;
+    sig_count++;
 }
 
-// будет завершать работу цикла
-void signal_SIGQUIT() {
-    printf("\nКоличество писков: %d\n", count);
+void sigquit() {
+    printf("\nКоличество писков: %d\n", sig_count);
     exit(0);
 }
 
 
 int main() {
 
-    signal(SIGINT,  &signal_SIGINT);
-    signal(SIGQUIT, &signal_SIGQUIT);
+    signal(SIGINT,  &sigint);
+    signal(SIGQUIT, &sigquit);
 
     while(1);
 }
