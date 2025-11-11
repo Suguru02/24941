@@ -7,7 +7,7 @@ int sig_count = 0;
 
 void sigint() {
     printf("\a");
-    fflush(NULL);
+    fflush(stdout);
     sig_count++;
 }
 
