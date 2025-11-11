@@ -3,28 +3,27 @@
 #include <signal.h>
 #include <unistd.h>
 
-int count = 0;
+int sig_count = 0;
 
-void sigint_handler(int sig) {
-    count++;
-    putchar('\a');      // Звуковой сигнал
+void sigint() {
+    printf("\a");
     fflush(stdout);
+    sig_count++;
 }
 
-void sigquit_handler(int sig) {
-    printf("\nСигнал прозвучал %d раз(а).\n", count);
+void sigquit() {
+    printf("\nКоличество писков: %d\n", sig_count);
     exit(0);
 }
 
+
 int main() {
-    signal(SIGINT, sigint_handler);
-    signal(SIGQUIT, sigquit_handler);
 
-    printf("Программа запущена. Нажмите Ctrl+C для звука, Ctrl+\\ для выхода.\n");
+    signal(SIGINT,  &sigint);
+    signal(SIGQUIT, &sigquit);
 
-    while (1) {
-        pause();  // Ждёт любого сигнала (эффективнее, чем sleep)
+    while(1){
+        pause();
     }
 
-    return 0;
 }
