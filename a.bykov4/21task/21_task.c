@@ -7,13 +7,14 @@ int count = 0;
 // будет писщать при нажатии CTRL^C
 void signal_SIGINT() {
     printf("\a");
+    // очистка буферов
     fflush(NULL);
     count++;
 }
 
 // будет завершать работу цикла
 void signal_SIGQUIT() {
-    printf("\nСигнал прозвучал %d раз\n", count);
+    printf("\nКоличество писков: %d\n", count);
     exit(0);
 }
 
