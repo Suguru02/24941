@@ -21,5 +21,8 @@ int main() {
     signal(SIGINT,  &sigint);
     signal(SIGQUIT, &sigquit);
 
-    start:goto start;
+    while(1){
+        pause();
+    }
+
 }
